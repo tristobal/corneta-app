@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class SimpleWidgetProvider extends AppWidgetProvider {
 
-    //private MediaPlayer mp;
+    private MediaPlayer mp;
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -35,19 +35,19 @@ public class SimpleWidgetProvider extends AppWidgetProvider {
         }
     }
 
-//    @Override
-//    public void onReceive(Context context, Intent intent) {
-//        if (mp == null)
-//            mp = MediaPlayer.create(context.getApplicationContext(), R.raw.MyMusic);
-//        final String action = intent.getAction();
-//
-//        if (ACTION_WIDGET_RECEIVER.equals(action)) {
-//            if (mp.isPlaying())
-//                mp.stop();
-//            else
-//                mp.start();
-//
-//        }
-//        super.onReceive(context, intent);
-//    }
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if (mp == null)
+            mp = MediaPlayer.create(context.getApplicationContext(), R.raw.corneta);
+        final String action = intent.getAction();
+
+        if (AppWidgetManager.ACTION_APPWIDGET_UPDATE.equals(action)) {
+            if (mp.isPlaying())
+                mp.stop();
+            else
+                mp.start();
+
+        }
+        super.onReceive(context, intent);
+    }
 }
